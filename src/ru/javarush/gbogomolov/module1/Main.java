@@ -16,6 +16,10 @@ public class Main {
         for (int i = 0; i < text.length(); i++) {
             String stringALPHABET = new String(ALPHABET);
             int charIndex = stringALPHABET.indexOf(text.charAt(i));
+            if(charIndex ==-1)
+            {
+                continue;
+            }
             int newIndex = (charIndex + key) % 44;
             char cipherChar = stringALPHABET.charAt(newIndex);
             cipher.append(cipherChar);
@@ -29,6 +33,10 @@ public class Main {
         for (int i = 0; i < text.length(); i++) {
             String stringALPHABET = new String(ALPHABET);
             int charIndex = stringALPHABET.indexOf(text.charAt(i));
+            if(charIndex ==-1)
+            {
+                continue;
+            }
             int newIndex = (charIndex - key) % 44;
             if( newIndex < 0 )
             {
@@ -44,16 +52,18 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-    String text = TextScanner.ReadText("C:\\Users\\bogom\\Desktop\\javarush-project-1\\src\\ru\\javarush\\gbogomolov\\module1\\cipher.txt");
+    String text = FileProcess.ReadText("C:\\Users\\bogom\\Desktop\\javarush-project-1\\src\\ru\\javarush\\gbogomolov\\module1\\cipher.txt");
 
         Scanner scanner = new Scanner(System.in);
 
         int key = scanner.nextInt();
 
         String cipherText = encoding(text, key);
-
         System.out.println("Ваш секрет зашифрован:" + cipherText);
 
-        System.out.println("Расшифрована тайна:" + decoding(cipherText, key));
+        String decodedText = decoding(cipherText , key);
+        System.out.println("Расшифрована тайна:" + decodedText);
+
+        FileProcess.WriteTextToFile(cipherText, decodedText);
         }
     }
