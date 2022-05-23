@@ -1,16 +1,18 @@
 package ru.javarush.gbogomolov.module1;
 
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class TextScanner {
     public static String ReadText(String fileName) throws IOException {
-        Path path = Paths.get(fileName);
-        Scanner scanner = new Scanner(path);
+        File file = new File("cipher.txt");
+
+        Scanner scanner = new Scanner(new FileInputStream(fileName));
         String line = "";
+
         while(scanner.hasNextLine()){
                 line = scanner.nextLine();
         }
