@@ -5,24 +5,38 @@ import java.io.*;
 import java.util.Scanner;
 
 public class FileProcess {
-    
-    public static String ReadText(String fileName) throws IOException {
 
-        Scanner scanner = new Scanner(new FileInputStream(fileName));
+    public static String ReadFile() throws FileNotFoundException {
+
+        System.out.println("Укажите путь к файлу: ");
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.flush();
+        String filename = scanner.nextLine();
+
+        Scanner file = new Scanner(filename);
+        scanner.close();
+
+        Scanner textFile = new Scanner(new FileInputStream(filename));
         String line = "";
 
-        while(scanner.hasNextLine()){
-                line = scanner.nextLine();
+        while(textFile.hasNextLine()){
+            line = textFile.nextLine();
         }
 
-        scanner.close();
+        textFile.close();
         return line;
     }
+
+
+
     public static void WriteTextToFile(String encodedText , String decodedText) throws IOException{
-        try(PrintWriter writer = new PrintWriter("C:\\Users\\bogom\\Desktop\\javarush-project-1\\src\\ru\\javarush\\gbogomolov\\module1\\final cipher.txt"))
+        try(PrintWriter writer = new PrintWriter("final cipher.txt"))
         {
             writer.println(encodedText);
             writer.println(decodedText);
         }
     }
+
+
 }

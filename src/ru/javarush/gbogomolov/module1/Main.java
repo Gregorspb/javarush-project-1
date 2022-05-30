@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 
+
 public class Main {
 
     private static final char[] ALPHABET = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з',
@@ -52,21 +53,28 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-    String text = FileProcess.ReadText("C:\\Users\\bogom\\Desktop\\javarush-project-1\\src\\ru\\javarush\\gbogomolov\\module1\\cipher.txt");
-
+        System.out.println("Добро пожаловать!");
         System.out.println("Выберите режим:");
-        System.out.println("1.Зашифровать");
-        System.out.println("2.Расшифровать");
 
-        Scanner scanner = new Scanner(System.in);
-        int key = scanner.nextInt();
+        System.out.println("1.Зашифровать текст");
+        System.out.println("2.Расшифровать текст");
+
+        Scanner scanMode = new Scanner(System.in);
+        int mode = scanMode.nextInt();
+
+        System.out.println("Укажите ключ для сдвига: ");
+        Scanner scanKey = new Scanner(System.in);
+        int key = scanKey.nextInt();
+
+        String text = FileProcess.ReadFile();
 
         String cipherText = encoding(text, key);
-        String decodedText = decoding(cipherText , key);
+        String decodedText = decoding(text , key);
 
-        if (key == 1) {
+        if (mode == 1) {
             System.out.println("Ваш секрет зашифрован:" + cipherText);
-        }else if(key == 2){
+
+        }else if(mode == 2){
             System.out.println("Расшифрована тайна:" + decodedText);
         }
         FileProcess.WriteTextToFile(cipherText, decodedText);
