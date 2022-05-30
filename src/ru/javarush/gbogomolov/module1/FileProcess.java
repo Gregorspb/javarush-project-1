@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class FileProcess {
-
+    
     public static String ReadText(String fileName) throws IOException {
 
         Scanner scanner = new Scanner(new FileInputStream(fileName));

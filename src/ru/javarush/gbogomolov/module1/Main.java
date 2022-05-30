@@ -54,16 +54,21 @@ public class Main {
     public static void main(String[] args) throws IOException {
     String text = FileProcess.ReadText("C:\\Users\\bogom\\Desktop\\javarush-project-1\\src\\ru\\javarush\\gbogomolov\\module1\\cipher.txt");
 
-        Scanner scanner = new Scanner(System.in);
+        System.out.println("Выберите режим:");
+        System.out.println("1.Зашифровать");
+        System.out.println("2.Расшифровать");
 
+        Scanner scanner = new Scanner(System.in);
         int key = scanner.nextInt();
 
         String cipherText = encoding(text, key);
-        System.out.println("Ваш секрет зашифрован:" + cipherText);
-
         String decodedText = decoding(cipherText , key);
-        System.out.println("Расшифрована тайна:" + decodedText);
 
+        if (key == 1) {
+            System.out.println("Ваш секрет зашифрован:" + cipherText);
+        }else if(key == 2){
+            System.out.println("Расшифрована тайна:" + decodedText);
+        }
         FileProcess.WriteTextToFile(cipherText, decodedText);
         }
     }
