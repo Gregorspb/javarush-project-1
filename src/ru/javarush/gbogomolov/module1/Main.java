@@ -58,9 +58,15 @@ public class Main {
 
         System.out.println("1.Зашифровать текст");
         System.out.println("2.Расшифровать текст");
+        System.out.println("0.Выход");
 
         Scanner scanMode = new Scanner(System.in);
         int mode = scanMode.nextInt();
+
+        if(mode == 0){
+            System.out.println("До свидания!");
+            System.exit(0);
+        }
 
         System.out.println("Укажите ключ для сдвига: ");
         Scanner scanKey = new Scanner(System.in);
@@ -78,5 +84,15 @@ public class Main {
             System.out.println("Расшифрована тайна:" + decodedText);
         }
         FileProcess.WriteTextToFile(cipherText, decodedText);
+        scanMode.close();
+
+        System.out.println("0.Выход");
+
+        Scanner sc = new Scanner(System.in);
+        int exit = sc.nextInt();
+        if(exit == 0){
+            System.out.println("До свидания!");
+            System.exit(0);
+        }
         }
     }
