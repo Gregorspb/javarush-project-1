@@ -85,14 +85,5 @@ public class Main {
         }
         FileProcess.WriteTextToFile(cipherText, decodedText);
         scanMode.close();
-
-        System.out.println("0.Выход");
-
-        Scanner sc = new Scanner(System.in);
-        int exit = sc.nextInt();
-        if(exit == 0){
-            System.out.println("До свидания!");
-            System.exit(0);
-        }
         }
     }
